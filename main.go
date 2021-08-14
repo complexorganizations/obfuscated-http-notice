@@ -6,10 +6,12 @@ import (
 	"net/http"
 )
 
+var openPort string = ":80"
+
 func main() {
 	// Determine how to handle requests.
 	http.Handle("/", http.HandlerFunc(handleRequest))
-	err := http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(openPort, nil)
 	// Log the error if there is one.
 	if err != nil {
 		log.Println(err)
