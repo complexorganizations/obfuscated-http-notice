@@ -7,8 +7,13 @@ import (
 )
 
 func main() {
+	// Determine how to handle requests.
 	http.Handle("/", http.HandlerFunc(handleRequest))
-	http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(":8080", nil)
+	// Log the error if there is one.
+	if err != nil {
+		log.Println(err)
+	}
 }
 
 func handleRequest(httpWriter http.ResponseWriter, r *http.Request) {
